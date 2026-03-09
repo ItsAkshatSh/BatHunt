@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BatHunt"
-run/main_scene="uid://cbrn3htc3o0r2"
+run/main_scene="uid://co50tkn6begp5"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [display]
@@ -21,6 +21,10 @@ window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/size/window_width=1280
 window/size/window_height=720
+
+[filesystem]
+
+import/blender/enabled=false
 
 [physics]
 

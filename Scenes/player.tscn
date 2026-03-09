@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://dwwux3jebtikg"]
+[gd_scene format=3 uid="uid://d3glye4351tgi"]
 
+[ext_resource type="Script" uid="uid://dcxaqx7vxpcey" path="res://Scripts/player.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://c1k7hgtmgm0aj" path="res://Assets/Guns/Shotgun.png" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://bflcbrenbvfxg" path="res://Scripts/gun.gd" id="2_gun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0iea"]
 atlas = ExtResource("1_v0iea")
@@ -115,17 +117,27 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h4iuc")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D" unique_id=98766660]
+[node name="Player" type="CharacterBody2D" unique_id=366143524]
+script = ExtResource("1_script")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1267721854]
-position = Vector2(42, 119)
+[node name="Gun" type="Node2D" parent="." unique_id=198273645]
+position = Vector2(42, 127)
+script = ExtResource("2_gun")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=1267721854]
 sprite_frames = SubResource("SpriteFrames_fd4e3")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1501114804]
-zoom = Vector2(1.9, 1.9)
+zoom = Vector2(0.88, 0.88)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=713812894]
+polygon = PackedVector2Array(-337, -188, -338, 192, -302, 192, -302, -188)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=1828046655]
+polygon = PackedVector2Array(292, -188, 291, 188, 337, 189, 337, -188)
