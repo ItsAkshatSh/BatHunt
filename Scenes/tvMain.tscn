@@ -1,15 +1,15 @@
 [gd_scene format=4 uid="uid://co50tkn6begp5"]
 
-[ext_resource type="Texture2D" uid="uid://b6r1momfg6lgb" path="res://Assets/tileset/tileset.png" id="1_f1apj"]
+[ext_resource type="Texture2D" path="res://Assets/tileset/tileset.png" id="1_f1apj"]
 [ext_resource type="Texture2D" uid="uid://ru48r3kl877q" path="res://Assets/old_tv.png" id="2_lba6f"]
 [ext_resource type="PackedScene" uid="uid://cbrn3htc3o0r2" path="res://Scenes/main.tscn" id="3_lba6f"]
 [ext_resource type="Script" uid="uid://brj7pfi370tcm" path="res://Scripts/tv_main.gd" id="4_tv"]
 [ext_resource type="PackedScene" uid="uid://d3glye4351tgi" path="res://Scenes/player.tscn" id="5_player"]
-[ext_resource type="Texture2D" path="res://Assets/button_rectangle_depth_flat.png" id="6_button_flat"]
-[ext_resource type="Texture2D" path="res://Assets/button_rectangle_depth_border.png" id="7_button_hover"]
-[ext_resource type="AudioStream" path="res://Assets/click-b.ogg" id="8_hover_sound"]
-[ext_resource type="FontFile" path="res://Assets/Bongo-8 Mono.ttf" id="9_bongo_font"]
-[ext_resource type="Script" path="res://Scripts/start_button.gd" id="10_start_button"]
+[ext_resource type="Texture2D" uid="uid://gy7gtw150g47" path="res://Assets/button_rectangle_depth_flat.png" id="6_button_flat"]
+[ext_resource type="Texture2D" uid="uid://dqy8cr2k43363" path="res://Assets/button_rectangle_depth_border.png" id="7_button_hover"]
+[ext_resource type="AudioStream" uid="uid://c6eltfgd2qqw7" path="res://Assets/click-b.ogg" id="8_hover_sound"]
+[ext_resource type="FontFile" uid="uid://dpg8rpkjidkd7" path="res://Assets/Bongo-8 Mono.ttf" id="9_bongo_font"]
+[ext_resource type="Script" uid="uid://bm8x5473m1fva" path="res://Scripts/start_button.gd" id="10_start_button"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ko6n5"]
 texture = ExtResource("1_f1apj")
@@ -3976,7 +3976,7 @@ position = Vector2(-36, -15)
 
 [node name="Player" parent="." unique_id=98766660 instance=ExtResource("5_player")]
 z_index = 3
-position = Vector2(376, 408)
+position = Vector2(374, 426)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1740625329]
 tile_set = SubResource("TileSet_kyrie")
@@ -3992,27 +3992,28 @@ tile_set = SubResource("TileSet_kyrie")
 [node name="UI" type="CanvasLayer" parent="." unique_id=2000000001]
 
 [node name="StartButtonRoot" type="Control" parent="UI" unique_id=2000000002]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = 300.0
-offset_right = 192.0
-offset_bottom = 356.0
+layout_mode = 3
+anchor_left = 0.509
+anchor_top = 0.92600006
+anchor_right = 0.509
+anchor_bottom = 0.92600006
+offset_left = -177.52002
+offset_top = -19.720032
+offset_right = 206.47998
+offset_bottom = 36.27997
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("10_start_button")
 
 [node name="StartButton" type="TextureButton" parent="UI/StartButtonRoot" unique_id=2000000003]
 layout_mode = 1
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -303.0
+offset_top = -368.0
+offset_right = -291.0
+offset_bottom = -366.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_button_flat")
@@ -4022,21 +4023,19 @@ ignore_texture_size = true
 [node name="Label" type="Label" parent="UI/StartButtonRoot/StartButton" unique_id=2000000004]
 layout_mode = 1
 anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = -5.0
+offset_top = 30.0
+offset_right = -5.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("9_bongo_font")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_bongo_font")
+text = "START"
 horizontal_alignment = 1
 vertical_alignment = 1
-text = "START"
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="UI/StartButtonRoot" unique_id=2000000005]
 stream = ExtResource("8_hover_sound")

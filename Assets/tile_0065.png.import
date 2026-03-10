@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://og7xuniuabbe"
-path="res://.godot/imported/2D Platformer Character SpriteSheet 1.png-c5193a4ee8817303184c706684bf0cbc.ctex"
+uid="uid://cuuck47hi4obo"
+path="res://.godot/imported/tile_0065.png-ddbcbb736ba41bfa8562497e6241d76a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D Platformer Sprites/2D Platformer Character/2D Platformer Character SpriteSheet 1.png"
-dest_files=["res://.godot/imported/2D Platformer Character SpriteSheet 1.png-c5193a4ee8817303184c706684bf0cbc.ctex"]
+source_file="res://Assets/tile_0065.png"
+dest_files=["res://.godot/imported/tile_0065.png-ddbcbb736ba41bfa8562497e6241d76a.ctex"]
 
 [params]
 

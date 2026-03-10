@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1k7hgtmgm0aj"
-path="res://.godot/imported/Shotgun.png-72acb94f82617e0ae5aa969387357cf9.ctex"
+uid="uid://gy7gtw150g47"
+path="res://.godot/imported/button_rectangle_depth_flat.png-980247c2babaec48d26b1513c8e23154.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/Shotgun.png"
-dest_files=["res://.godot/imported/Shotgun.png-72acb94f82617e0ae5aa969387357cf9.ctex"]
+source_file="res://Assets/button_rectangle_depth_flat.png"
+dest_files=["res://.godot/imported/button_rectangle_depth_flat.png-980247c2babaec48d26b1513c8e23154.ctex"]
 
 [params]
 

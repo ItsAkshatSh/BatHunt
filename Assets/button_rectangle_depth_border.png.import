@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byqpjsi1dp4ak"
-path="res://.godot/imported/parallax3.png-736b12ad8662f5412b0cfe9c6b1ab0db.ctex"
+uid="uid://dqy8cr2k43363"
+path="res://.godot/imported/button_rectangle_depth_border.png-288f8aa633bc3f46eae72cc99b916db0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/parallax/parallax3.png"
-dest_files=["res://.godot/imported/parallax3.png-736b12ad8662f5412b0cfe9c6b1ab0db.ctex"]
+source_file="res://Assets/button_rectangle_depth_border.png"
+dest_files=["res://.godot/imported/button_rectangle_depth_border.png-288f8aa633bc3f46eae72cc99b916db0.ctex"]
 
 [params]
 

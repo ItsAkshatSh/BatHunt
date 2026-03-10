@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtv3g7cqpo131"
-path="res://.godot/imported/2DPlatformer Character Shading SpriteSheet.png-2a93a81ce558274e719d3aa0bdc833f7.ctex"
+uid="uid://n0hxbttgqdn8"
+path="res://.godot/imported/keyboard-&-mouse_sheet_double.png-a8e6f16226382ea503d946265dbe2258.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/2D Platformer Sprites/2D Platformer Character/2DPlatformer Character Shading SpriteSheet.png"
-dest_files=["res://.godot/imported/2DPlatformer Character Shading SpriteSheet.png-2a93a81ce558274e719d3aa0bdc833f7.ctex"]
+source_file="res://Assets/keyboard-&-mouse_sheet_double.png"
+dest_files=["res://.godot/imported/keyboard-&-mouse_sheet_double.png-a8e6f16226382ea503d946265dbe2258.ctex"]
 
 [params]
 
