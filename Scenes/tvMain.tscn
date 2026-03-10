@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cbrn3htc3o0r2" path="res://Scenes/main.tscn" id="3_lba6f"]
 [ext_resource type="Script" uid="uid://brj7pfi370tcm" path="res://Scripts/tv_main.gd" id="4_tv"]
 [ext_resource type="PackedScene" uid="uid://d3glye4351tgi" path="res://Scenes/player.tscn" id="5_player"]
-[ext_resource type="Texture2D" path="res://Assets/button_rectangle_depth_flat.png" id="6_button_flat"]
-[ext_resource type="Texture2D" path="res://Assets/button_rectangle_depth_border.png" id="7_button_hover"]
-[ext_resource type="AudioStream" path="res://Assets/click-b.ogg" id="8_hover_sound"]
-[ext_resource type="FontFile" path="res://Assets/Bongo-8 Mono.ttf" id="9_bongo_font"]
-[ext_resource type="Script" path="res://Scripts/start_button.gd" id="10_start_button"]
+[ext_resource type="Texture2D" uid="uid://gy7gtw150g47" path="res://Assets/button_rectangle_depth_flat.png" id="6_button_flat"]
+[ext_resource type="Texture2D" uid="uid://dqy8cr2k43363" path="res://Assets/button_rectangle_depth_border.png" id="7_button_hover"]
+[ext_resource type="AudioStream" uid="uid://c6eltfgd2qqw7" path="res://Assets/click-b.ogg" id="8_hover_sound"]
+[ext_resource type="FontFile" uid="uid://dpg8rpkjidkd7" path="res://Assets/Bongo-8 Mono.ttf" id="9_bongo_font"]
+[ext_resource type="Script" uid="uid://bm8x5473m1fva" path="res://Scripts/start_button.gd" id="10_start_button"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ko6n5"]
 texture = ExtResource("1_f1apj")
@@ -4021,7 +4021,7 @@ anchor_bottom = 0.92600006
 offset_left = -177.52002
 offset_top = -19.720032
 offset_right = 206.47998
-offset_bottom = 36.27997
+offset_bottom = 135.27997
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_start_button")
@@ -4034,7 +4034,7 @@ anchor_bottom = 1.0
 offset_left = -303.0
 offset_top = -368.0
 offset_right = -291.0
-offset_bottom = -366.0
+offset_bottom = -400.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("6_button_flat")
@@ -4046,10 +4046,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = 30.0
-offset_right = -5.0
-offset_bottom = 30.0
+offset_left = -3.0
+offset_top = -1.0
+offset_right = -3.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

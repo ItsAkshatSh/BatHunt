@@ -13,11 +13,11 @@ func _ready() -> void:
 		start_button.pressed.connect(_on_start_button_pressed)
 
 	if label:
-		label.add_theme_color_override("font_color", Color.BLACK)
+		label.add_theme_color_override("font_color", Color.WHITE)
 
 func _on_start_button_mouse_entered() -> void:
 	if label:
-		label.add_theme_color_override("font_color", Color.WHITE)
+		label.add_theme_color_override("font_color", Color.BLACK)
 
 	if hover_sound and hover_sound.stream:
 		hover_sound.play()
@@ -35,5 +35,7 @@ func _on_start_button_pressed() -> void:
 func _on_fade_finished() -> void:
 	hide()
 	start_pressed.emit()
+
+
 
 
