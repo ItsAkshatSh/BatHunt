@@ -130,14 +130,11 @@ position = Vector2(42, 127)
 script = ExtResource("2_gun")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=1267721854]
+texture_filter = 1
+position = Vector2(60.375, 66.875)
+scale = Vector2(2.8389568, 3.5589428)
 sprite_frames = SubResource("SpriteFrames_fd4e3")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1501114804]
-zoom = Vector2(0.88, 0.88)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=713812894]
-polygon = PackedVector2Array(-337, -188, -338, 192, -302, 192, -302, -188)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=1828046655]
-polygon = PackedVector2Array(292, -188, 291, 188, 337, 189, 337, -188)
+zoom = Vector2(0.86, 0.86)
