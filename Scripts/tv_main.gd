@@ -7,19 +7,21 @@ extends Node2D
 @onready var world_root: Node2D = $"WorldRoot"
 @onready var start_button_root: Control = $"UI/StartButtonRoot"
 
+var _game_started: bool = false
+
 func _ready() -> void:
-	# Start with the game paused; only the start UI should run.
-	get_tree().paused = true
+	_game_started = false
 
-	if start_button_root:
-		# Allow start button script to keep processing while the tree is paused.
-		start_button_root.process_mode = Node.PROCESS_MODE_ALWAYS
-
-		if start_button_root.has_signal("start_pressed"):
-			start_button_root.start_pressed.connect(_on_start_pressed)
+	if start_button_root and start_button_root.has_signal("start_pressed"):
+		start_button_root.start_pressed.connect(_on_start_pressed)
 
 func _process(delta: float) -> void:
 	if world_root == null:
+		return
+
+	# Disable world scrolling until the game has started,
+	# but leave the gun and other nodes fully active.
+	if not _game_started:
 		return
 
 	var direction: float = 0.0
@@ -35,6 +37,5 @@ func _process(delta: float) -> void:
 	world_root.position.x = clampf(world_root.position.x, min_world_x, max_world_x)
 
 func _on_start_pressed() -> void:
-	# Unpause the game and let everything else run normally.
-	get_tree().paused = false
+	_game_started = true
 
