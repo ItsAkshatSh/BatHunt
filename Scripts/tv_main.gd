@@ -38,4 +38,3 @@ func _process(delta: float) -> void:
 
 func _on_start_pressed() -> void:
 	_game_started = true
-

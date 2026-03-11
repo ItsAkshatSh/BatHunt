@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d3glye4351tgi" path="res://Scenes/player.tscn" id="5_player"]
 [ext_resource type="Texture2D" uid="uid://gy7gtw150g47" path="res://Assets/button_rectangle_depth_flat.png" id="6_button_flat"]
 [ext_resource type="Texture2D" uid="uid://dqy8cr2k43363" path="res://Assets/button_rectangle_depth_border.png" id="7_button_hover"]
+[ext_resource type="Script" uid="uid://cd1bs4bp87hum" path="res://Scripts/title_fade.gd" id="7_ew5h5"]
 [ext_resource type="AudioStream" uid="uid://c6eltfgd2qqw7" path="res://Assets/click-b.ogg" id="8_hover_sound"]
 [ext_resource type="FontFile" uid="uid://dpg8rpkjidkd7" path="res://Assets/Bongo-8 Mono.ttf" id="9_bongo_font"]
 [ext_resource type="Script" uid="uid://bm8x5473m1fva" path="res://Scripts/start_button.gd" id="10_start_button"]
@@ -4002,9 +4003,9 @@ anchors_preset = -1
 anchor_left = -0.0609375
 anchor_top = 0.10138889
 anchor_right = 0.4203125
-anchor_bottom = 0.6805556
-offset_left = 369.0
-offset_right = 369.0
+anchor_bottom = 0.65416664
+offset_left = 346.0
+offset_right = 346.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -4031,6 +4032,7 @@ label_settings = SubResource("LabelSettings_pmsqi")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+script = ExtResource("7_ew5h5")
 
 [node name="StartButtonRoot" type="Control" parent="UI" unique_id=2000000002]
 layout_mode = 3
@@ -4077,6 +4079,6 @@ vertical_alignment = 1
 [node name="HoverSound" type="AudioStreamPlayer" parent="UI/StartButtonRoot" unique_id=2000000005]
 stream = ExtResource("8_hover_sound")
 
-[node name="Player" parent="." unique_id=98766660 instance=ExtResource("5_player")]
+[node name="Player" parent="UI" unique_id=98766660 instance=ExtResource("5_player")]
 z_index = 4
-position = Vector2(374, 426)
+position = Vector2(402, 443)
