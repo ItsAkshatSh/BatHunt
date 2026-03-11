@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var scroll_speed: float = 300.0
-@export var min_world_x: float = -400.0
-@export var max_world_x: float = 400.0
+@export var min_world_x: float = -300.0
+@export var max_world_x: float = 0.0
 
 @onready var world_root: Node2D = $"WorldRoot"
 @onready var start_button_root: Control = $"UI/StartButtonRoot"
@@ -12,6 +12,11 @@ var _game_started: bool = false
 func _ready() -> void:
 	_game_started = false
 
+	# Set custom crosshair cursor
+	var crosshair: Texture2D = load("res://Assets/tile_0065.png")
+	if crosshair:
+		Input.set_custom_mouse_cursor(crosshair)
+
 	if start_button_root and start_button_root.has_signal("start_pressed"):
 		start_button_root.start_pressed.connect(_on_start_pressed)
 
@@ -19,8 +24,6 @@ func _process(delta: float) -> void:
 	if world_root == null:
 		return
 
-	# Disable world scrolling until the game has started,
-	# but leave the gun and other nodes fully active.
 	if not _game_started:
 		return
 

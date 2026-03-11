@@ -23,7 +23,7 @@ var _base_position: Vector2 = Vector2(42, 127)
 @export var aim_strength: float = 0.5
 
 # If set, shot_at will also try to damage/hit nodes at the target (radius in pixels).
-@export var hit_radius: float = 0.0
+@export var hit_radius: float = 32.0
 
 signal shot_at(target_global_position: Vector2)
 
@@ -137,7 +137,16 @@ func _apply_damage_at_position(target: Vector2) -> void:
 	for result in results:
 		var collider: Object = result.collider
 
-		if collider is Node2D and collider.has_method("take_damage"):
-			(collider as Node2D).take_damage()
-		elif collider is Node2D and collider.has_method("hit"):
-			(collider as Node2D).hit()
+		if not (collider is Node2D):
+			continue
+
+		var node2d := collider as Node2D
+
+		# Only damage bats (group-based).
+		if not node2d.is_in_group("bats"):
+			continue
+
+		if node2d.has_method("take_damage"):
+			node2d.take_damage()
+		elif node2d.has_method("hit"):
+			node2d.hit()
