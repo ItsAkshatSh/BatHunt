@@ -1,3 +1,4 @@
+# bat.gd
 extends CharacterBody2D
 
 enum State { SLEEPING, FLYING, DAMAGED, DEAD }
@@ -32,11 +33,10 @@ func _process_flying(delta: float) -> void:
 		var collider = collision.get_collider()
 		if collider == null:
 			return
-		match collider.name:
-			"top":
-				queue_free()
-			"left", "right":
-				_velocity.x = -_velocity.x
+		if collider.name == "top":
+			queue_free()
+			return
+		_velocity = _velocity.bounce(collision.get_normal())
 
 	if _sprite:
 		_sprite.flip_h = _velocity.x < 0
@@ -49,6 +49,12 @@ func wake_up(health: int) -> void:
 	_health = health
 	_set_state(State.FLYING)
 
+func reset(health: int) -> void:
+	_health = health
+	_velocity = Vector2.ZERO
+	_dir_timer = 0.0
+	_set_state(State.SLEEPING)
+
 func _set_state(new_state: State) -> void:
 	_state = new_state
 	match new_state:
@@ -59,11 +65,12 @@ func _set_state(new_state: State) -> void:
 					_sprite.play(&"sleep")
 		State.FLYING:
 			set_collision_layer_value(1, true)
+			rotation = 0.0
 			_pick_new_direction()
 			_dir_timer = direction_change_interval
 			if _sprite and _sprite.sprite_frames:
-				if _sprite.sprite_frames.has_animation(&"fly"):
-					_sprite.play(&"fly")
+				if _sprite.sprite_frames.has_animation(&"movement"):
+					_sprite.play(&"movement")
 		State.DAMAGED:
 			if _sprite and _sprite.sprite_frames:
 				if _sprite.sprite_frames.has_animation(&"damage"):
@@ -71,8 +78,8 @@ func _set_state(new_state: State) -> void:
 		State.DEAD:
 			set_collision_layer_value(1, false)
 			if _sprite and _sprite.sprite_frames:
-				if _sprite.sprite_frames.has_animation(&"die"):
-					_sprite.play(&"die")
+				if _sprite.sprite_frames.has_animation(&"death"):
+					_sprite.play(&"death")
 
 func take_damage() -> void:
 	if _state != State.FLYING and _state != State.DAMAGED:

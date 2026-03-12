@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byqpjsi1dp4ak" path="res://Assets/parallax/parallax3.png" id="4_6bp64"]
 [ext_resource type="Texture2D" uid="uid://ru48r3kl877q" path="res://Assets/old_tv.png" id="7_344ge"]
 [ext_resource type="Script" uid="uid://cib0hcietg3uk" path="res://Scripts/main.gd" id="7_main"]
+[ext_resource type="PackedScene" uid="uid://bxy4bakrwdpja" path="res://Scenes/bat.tscn" id="8_344ge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_344ge"]
 texture = ExtResource("1_kry3j")
@@ -4068,3 +4069,42 @@ position = Vector2(-1, 520)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/collision/bottom" unique_id=852872379]
 position = Vector2(519.5, 56.25)
 shape = SubResource("RectangleShape2D_344ge")
+
+[node name="Bat" type="Node2D" parent="." unique_id=856755602]
+z_index = 1
+position = Vector2(34, 15)
+
+[node name="Bat" parent="Bat" unique_id=1904234920 instance=ExtResource("8_344ge")]
+position = Vector2(160, 261)
+rotation = 3.1415927
+
+[node name="Bat2" parent="Bat" unique_id=978775381 instance=ExtResource("8_344ge")]
+position = Vector2(92, 269)
+rotation = 3.1415927
+
+[node name="Bat3" parent="Bat" unique_id=1776410518 instance=ExtResource("8_344ge")]
+position = Vector2(100, 313)
+
+[node name="Bat4" parent="Bat" unique_id=52478539 instance=ExtResource("8_344ge")]
+position = Vector2(467, 360)
+
+[node name="Bat5" parent="Bat" unique_id=1836278207 instance=ExtResource("8_344ge")]
+position = Vector2(548, 358)
+
+[node name="Bat6" parent="Bat" unique_id=27184449 instance=ExtResource("8_344ge")]
+position = Vector2(802, 296)
+
+[node name="Bat7" parent="Bat" unique_id=1475358297 instance=ExtResource("8_344ge")]
+position = Vector2(309, 265)
+rotation = 3.1503193
+
+[node name="Bat8" parent="Bat" unique_id=613859012 instance=ExtResource("8_344ge")]
+position = Vector2(405, 267)
+rotation = 3.1503193
+
+[node name="Bat9" parent="Bat" unique_id=225479930 instance=ExtResource("8_344ge")]
+position = Vector2(707, 206)
+rotation = 3.1503193
+
+[node name="Bat10" parent="Bat" unique_id=1300842679 instance=ExtResource("8_344ge")]
+position = Vector2(248, 377)

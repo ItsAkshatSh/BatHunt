@@ -133,6 +133,7 @@ script = ExtResource("1_script")
 [node name="Gun" type="Node2D" parent="." unique_id=198273645]
 position = Vector2(42, 127)
 script = ExtResource("2_gun")
+hit_radius = 64.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=1267721854]
 texture_filter = 1

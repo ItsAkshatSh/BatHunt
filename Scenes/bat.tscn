@@ -229,8 +229,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jckqh"]
+radius = 28.0
+
 [node name="Bat" type="CharacterBody2D" unique_id=1904234920]
 script = ExtResource("1_wt6c1")
+fly_speed = 40.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1379881595]
 texture_filter = 1
@@ -238,5 +242,5 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_c2plu")
 animation = &"sleep"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1443706365]
-polygon = PackedVector2Array(-14, 9, -13, 8, -12, 6, -10, 4, -8, 4, -8, 0, -6, -2, -2, -2, -2, -6, 0, -6, 0, -8, 2, -8, 2, -6, 5, -6, 6, -8, 8, -8, 8, -6, 10, -6, 10, -1, 10, 4, 12, 4, 12, 6, 14, 6, 14, 8, 16, 8, 16, 18, 14, 18, 14, 16, 12, 16, 12, 14, 10, 14, 10, 12, 8, 12, 8, 10, 7, 10, 6, 8, 4, 8, 4, 10, -2, 10, -2, 8, -4, 8, -4, 11, -6, 12, -12, 18, -14, 18)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1068312277]
+shape = SubResource("CircleShape2D_jckqh")
