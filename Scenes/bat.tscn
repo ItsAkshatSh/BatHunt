@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxy4bakrwdpja"]
 
 [ext_resource type="Texture2D" uid="uid://dbiunwbue5yyv" path="res://Assets/2D Platformer Sprites/2D Platformer Enemy Bat/2D Platformer Enemy Bat Shading SpriteSheet.png" id="1_j7be8"]
+[ext_resource type="Script" uid="uid://c456cfoou7tjv" path="res://Scripts/bat.gd" id="1_wt6c1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jckqh"]
 atlas = ExtResource("1_j7be8")
@@ -114,6 +115,10 @@ region = Rect2(144, 0, 48, 48)
 atlas = ExtResource("1_j7be8")
 region = Rect2(192, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7be8"]
+atlas = ExtResource("1_j7be8")
+region = Rect2(144, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_c2plu"]
 animations = [{
 "frames": [{
@@ -214,19 +219,24 @@ animations = [{
 "loop": true,
 "name": &"movement",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7be8")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6pama"]
-radius = 33.0
-
 [node name="Bat" type="CharacterBody2D" unique_id=1904234920]
+script = ExtResource("1_wt6c1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1379881595]
 texture_filter = 1
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_c2plu")
-animation = &"movement"
-frame_progress = 0.03874189
+animation = &"sleep"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=524424643]
-shape = SubResource("CircleShape2D_6pama")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1443706365]
+polygon = PackedVector2Array(-14, 9, -13, 8, -12, 6, -10, 4, -8, 4, -8, 0, -6, -2, -2, -2, -2, -6, 0, -6, 0, -8, 2, -8, 2, -6, 5, -6, 6, -8, 8, -8, 8, -6, 10, -6, 10, -1, 10, 4, 12, 4, 12, 6, 14, 6, 14, 8, 16, 8, 16, 18, 14, 18, 14, 16, 12, 16, 12, 14, 10, 14, 10, 12, 8, 12, 8, 10, 7, 10, 6, 8, 4, 8, 4, 10, -2, 10, -2, 8, -4, 8, -4, 11, -6, 12, -12, 18, -14, 18)
