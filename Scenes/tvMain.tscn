@@ -5563,6 +5563,7 @@ texture_region_size = Vector2i(337, 282)
 texture = ExtResource("18_uk6yf")
 0:0/size_in_atlas = Vector2i(16, 16)
 0:0/animation_columns = 3
+0:0/animation_speed = 3.0
 0:0/animation_frame_0/duration = 1.0
 0:0/animation_frame_1/duration = 1.0
 0:0/animation_frame_2/duration = 1.0
@@ -5577,12 +5578,15 @@ sources/4 = SubResource("TileSetAtlasSource_l1lcm")
 sources/6 = SubResource("TileSetAtlasSource_m6yia")
 
 [node name="TvMain" type="Node2D" unique_id=163761455]
+z_index = -1
 texture_filter = 1
 script = ExtResource("4_tv")
 zoom_target = Vector2(1.5, 1.5)
 zoom_position_target = Vector2(-15, -65)
 crt_size_after_zoom = Vector2(1060, 670)
 crt_position_after_zoom = Vector2(20, 30)
+wave_label_size = Vector2(240, 240)
+wave_label_position = Vector2(-80, 0)
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=1034311241]
 
@@ -5641,6 +5645,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 script = ExtResource("7_ew5h5")
+
+[node name="WaveLabel" type="Label" parent="UI" unique_id=2000000010]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -120.0
+offset_right = 600.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.35, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("9_bongo_font")
+theme_override_font_sizes/font_size = 160
+text = "WAVE 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StartButtonRoot" type="Control" parent="UI" unique_id=2000000002]
 layout_mode = 3

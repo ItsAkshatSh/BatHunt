@@ -8,6 +8,8 @@ extends Node2D
 @export var zoom_position_target: Vector2 = Vector2(0.0, 0.0)
 @export var crt_size_after_zoom: Vector2 = Vector2(1152.0, 648.0)
 @export var crt_position_after_zoom: Vector2 = Vector2(0.0, 0.0)
+@export var wave_label_size: Vector2 = Vector2(1200.0, 240.0)
+@export var wave_label_position: Vector2 = Vector2(0.0, 0.0)
 
 const WAVE_CONFIG = [
 	{"max_active": 4, "health": 1, "wake_interval": 6.0},
@@ -23,6 +25,7 @@ const BETWEEN_BATCH_DELAY: float = 2.0
 @onready var start_button_root: Control = $"UI/StartButtonRoot"
 @onready var player: Node2D = $"UI/Player"
 @onready var crt_overlay: ColorRect = $"UI/CRTOverlay"
+@onready var wave_label: Label = $"UI/WaveLabel"
 
 var _game_started: bool = false
 var _current_wave: int = 0
@@ -36,6 +39,7 @@ var _wake_timer: float = 0.0
 var _batch_sleeping: Array = []
 var _batch_size: int = 0
 var _batch_cleared_count: int = 0
+var _wave_banner_showing: bool = false
 
 func _ready() -> void:
 	_game_started = false
@@ -64,7 +68,7 @@ func _process(delta: float) -> void:
 		_between_wave_timer -= delta
 		if _between_wave_timer <= 0.0:
 			_between_waves = false
-			_start_wave(_current_wave)
+			_begin_wave_with_banner(_current_wave)
 		return
 
 	# Between batch cooldown
@@ -73,6 +77,10 @@ func _process(delta: float) -> void:
 		if _between_batch_timer <= 0.0:
 			_between_batch = false
 			_spawn_next_batch()
+		return
+
+	# Wave banner phase: keep bats sleeping until banner ends.
+	if _wave_banner_showing:
 		return
 
 	# Wake sleeping bats
@@ -108,6 +116,36 @@ func _start_wave(wave_index: int) -> void:
 
 	print("Wave ", wave_index + 1, " started with ", _remaining_pool.size(), " bats in pool")
 	_spawn_next_batch()
+
+
+func _begin_wave_with_banner(wave_index: int) -> void:
+	if wave_label == null:
+		_start_wave(wave_index)
+		return
+
+	_wave_banner_showing = true
+	wave_label.visible = true
+	wave_label.modulate.a = 0.0
+	wave_label.text = "WAVE %d" % (wave_index + 1)
+	wave_label.offset_left = wave_label_position.x - wave_label_size.x / 2.0
+	wave_label.offset_top = wave_label_position.y - wave_label_size.y / 2.0
+	wave_label.offset_right = wave_label_position.x + wave_label_size.x / 2.0
+	wave_label.offset_bottom = wave_label_position.y + wave_label_size.y / 2.0
+
+	# Fade in -> hold -> fade out, then start the wave.
+	var tween := create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(wave_label, "modulate:a", 1.0, 0.35)
+	tween.tween_interval(1.0)
+	tween.set_ease(Tween.EASE_IN)
+	tween.tween_property(wave_label, "modulate:a", 0.0, 0.45)
+	tween.tween_callback(func():
+		if wave_label:
+			wave_label.visible = false
+		_wave_banner_showing = false
+		_start_wave(wave_index)
+	)
 
 func _spawn_next_batch() -> void:
 	if _remaining_pool.is_empty():
@@ -172,11 +210,11 @@ func _on_start_pressed() -> void:
 
 		tween.tween_callback(func():
 			_game_started = true
-			_start_wave(_current_wave)
+			_begin_wave_with_banner(_current_wave)
 		)
 	else:
 		_game_started = true
-		_start_wave(_current_wave)
+		_begin_wave_with_banner(_current_wave)
 
 func _find_camera(node: Node) -> Camera2D:
 	for child in node.get_children():
