@@ -233,8 +233,9 @@ animations = [{
 radius = 28.0
 
 [node name="Bat" type="CharacterBody2D" unique_id=1904234920]
+texture_filter = 1
 script = ExtResource("1_wt6c1")
-fly_speed = 40.0
+fly_speed = 120.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1379881595]
 texture_filter = 1

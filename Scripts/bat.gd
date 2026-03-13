@@ -1,10 +1,10 @@
-# bat.gd
 extends CharacterBody2D
 
 enum State { SLEEPING, FLYING, DAMAGED, DEAD }
 
 @export var fly_speed: float = 150.0
 @export var direction_change_interval: float = 0.8
+@export var wave_number: int = 1
 
 @onready var _sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -12,6 +12,8 @@ var _state: State = State.SLEEPING
 var _dir_timer: float = 0.0
 var _velocity: Vector2 = Vector2.ZERO
 var _health: int = 1
+
+signal bat_removed
 
 func _ready() -> void:
 	add_to_group("bats")
@@ -34,6 +36,7 @@ func _process_flying(delta: float) -> void:
 		if collider == null:
 			return
 		if collider.name == "top":
+			bat_removed.emit()
 			queue_free()
 			return
 		_velocity = _velocity.bounce(collision.get_normal())
@@ -84,17 +87,17 @@ func _set_state(new_state: State) -> void:
 func take_damage() -> void:
 	if _state != State.FLYING and _state != State.DAMAGED:
 		return
-
 	_health -= 1
-
 	if _health <= 0:
 		_set_state(State.DEAD)
-		if _sprite:
+		set_collision_layer_value(1, false)
+		if _sprite and _sprite.sprite_frames.has_animation(&"death"):
 			await _sprite.animation_finished
+		bat_removed.emit()
 		queue_free()
 	else:
 		_set_state(State.DAMAGED)
-		if _sprite:
+		if _sprite and _sprite.sprite_frames.has_animation(&"damage"):
 			await _sprite.animation_finished
 		if _state != State.DEAD:
 			_set_state(State.FLYING)

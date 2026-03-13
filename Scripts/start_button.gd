@@ -7,7 +7,6 @@ signal start_pressed
 @onready var hover_sound: AudioStreamPlayer = $HoverSound
 
 func _ready() -> void:
-	# If you want this control to render behind Node2Ds, just set z_index low
 	self.z_index = -1
 
 	# Connect button signals
@@ -31,7 +30,7 @@ func _on_start_button_mouse_exited() -> void:
 		label.add_theme_color_override("font_color", Color.WHITE)
 
 func _on_start_button_pressed() -> void:
-	# Fade this whole control out, then notify listeners to start the game.
+	
 	var tween := create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.4)
 	tween.finished.connect(_on_fade_finished)

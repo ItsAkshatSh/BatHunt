@@ -124,16 +124,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=366143524]
+texture_filter = 1
 script = ExtResource("1_script")
 
 [node name="Gun" type="Node2D" parent="." unique_id=198273645]
-position = Vector2(42, 127)
+position = Vector2(43, 127)
 script = ExtResource("2_gun")
-hit_radius = 64.0
+hit_radius = 22.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=1267721854]
 texture_filter = 1
@@ -144,7 +145,7 @@ animation = &"idle"
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="Gun" unique_id=963790081]
 stream = ExtResource("4_8erm5")
-volume_db = -5.0
+volume_db = -41.491
 
 [node name="PushSound" type="AudioStreamPlayer2D" parent="Gun" unique_id=1295990319]
 stream = ExtResource("5_f1ek2")
