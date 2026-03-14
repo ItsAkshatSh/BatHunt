@@ -1,3 +1,4 @@
+# bat.gd
 extends CharacterBody2D
 
 enum State { SLEEPING, FLYING, DAMAGED, DEAD }
@@ -13,7 +14,7 @@ var _dir_timer: float = 0.0
 var _velocity: Vector2 = Vector2.ZERO
 var _health: int = 1
 
-signal bat_removed
+signal bat_removed(was_killed: bool, bat_position: Vector2)
 
 func _ready() -> void:
 	add_to_group("bats")
@@ -36,7 +37,7 @@ func _process_flying(delta: float) -> void:
 		if collider == null:
 			return
 		if collider.name == "top":
-			bat_removed.emit()
+			bat_removed.emit(false, global_position)
 			queue_free()
 			return
 		_velocity = _velocity.bounce(collision.get_normal())
@@ -91,9 +92,10 @@ func take_damage() -> void:
 	if _health <= 0:
 		_set_state(State.DEAD)
 		set_collision_layer_value(1, false)
+		var death_pos: Vector2 = global_position
+		bat_removed.emit(true, death_pos)
 		if _sprite and _sprite.sprite_frames.has_animation(&"death"):
 			await _sprite.animation_finished
-		bat_removed.emit()
 		queue_free()
 	else:
 		_set_state(State.DAMAGED)
