@@ -138,8 +138,8 @@ hit_radius = 22.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=1267721854]
 texture_filter = 1
-position = Vector2(245.375, 66.875)
-scale = Vector2(2.8389568, 3.5589428)
+position = Vector2(235, 131)
+scale = Vector2(2, 2.507)
 sprite_frames = SubResource("SpriteFrames_fd4e3")
 animation = &"idle"
 

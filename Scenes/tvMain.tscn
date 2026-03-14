@@ -5585,8 +5585,10 @@ zoom_target = Vector2(1.5, 1.5)
 zoom_position_target = Vector2(-15, -65)
 crt_size_after_zoom = Vector2(1060, 670)
 crt_position_after_zoom = Vector2(20, 30)
+points_per_wave = 125
 score_label_position = Vector2(950, 60)
 score_label_size = Vector2(183.055, 31)
+go_home_button_position = Vector2(0, 80)
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=1034311241]
 
@@ -5751,132 +5753,6 @@ vertical_alignment = 1
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="UI/StartButtonRoot" unique_id=2000000005]
 stream = ExtResource("8_hover_sound")
-
-[node name="GameOverRoot" type="Control" parent="UI" unique_id=2000000012]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Overlay" type="ColorRect" parent="UI/GameOverRoot" unique_id=2000000013]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.88)
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/GameOverRoot" unique_id=2000000014]
-anchors_preset = 15
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -260.0
-offset_top = -150.0
-offset_right = 260.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBox" type="VBoxContainer" parent="UI/GameOverRoot/CenterContainer" unique_id=2000000015]
-layout_mode = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 16
-
-[node name="TitleLabel" type="Label" parent="UI/GameOverRoot" unique_id=2000000016]
-layout_mode = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -220.0
-offset_right = 220.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
-theme_override_colors/font_outline_color = Color(0.2, 0, 0.35, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("9_bongo_font")
-theme_override_font_sizes/font_size = 56
-text = "GAME OVER"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ScoreLabel" type="Label" parent="UI/GameOverRoot" unique_id=2000000017]
-layout_mode = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -220.0
-offset_right = 220.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
-theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.35, 1)
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("9_bongo_font")
-theme_override_font_sizes/font_size = 28
-text = "FINAL SCORE: 0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Buttons" type="HBoxContainer" parent="UI/GameOverRoot" unique_id=2000000018]
-layout_mode = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -180.0
-offset_right = 180.0
-grow_horizontal = 2
-alignment = 1
-theme_override_constants/separation = 24
-
-[node name="ContinueButton" type="TextureButton" parent="UI/GameOverRoot/Buttons" unique_id=2000000019]
-layout_mode = 2
-custom_minimum_size = Vector2(150, 52)
-texture_normal = ExtResource("6_button_flat")
-texture_hover = ExtResource("7_button_hover")
-ignore_texture_size = true
-
-[node name="Label" type="Label" parent="UI/GameOverRoot/Buttons/ContinueButton" unique_id=2000000020]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
-theme_override_fonts/font = ExtResource("9_bongo_font")
-theme_override_font_sizes/font_size = 24
-text = "CONTINUE"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HomeButton" type="TextureButton" parent="UI/GameOverRoot/Buttons" unique_id=2000000021]
-layout_mode = 2
-custom_minimum_size = Vector2(150, 52)
-texture_normal = ExtResource("6_button_flat")
-texture_hover = ExtResource("7_button_hover")
-ignore_texture_size = true
-
-[node name="Label" type="Label" parent="UI/GameOverRoot/Buttons/HomeButton" unique_id=2000000022]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.94, 0.96, 1, 1)
-theme_override_fonts/font = ExtResource("9_bongo_font")
-theme_override_font_sizes/font_size = 24
-text = "GO HOME"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Player" parent="UI" unique_id=98766660 instance=ExtResource("5_player")]
 z_index = 4

@@ -1,4 +1,3 @@
-# bat.gd
 extends CharacterBody2D
 
 enum State { SLEEPING, FLYING, DAMAGED, DEAD }
