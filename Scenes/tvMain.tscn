@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b6r1momfg6lgb" path="res://Assets/tileset/tileset.png" id="1_f1apj"]
 [ext_resource type="Texture2D" uid="uid://ru48r3kl877q" path="res://Assets/old_tv.png" id="2_lba6f"]
+[ext_resource type="PackedScene" uid="uid://bxy4bakrwdpja" path="res://Scenes/bat.tscn" id="2_m6yia"]
 [ext_resource type="PackedScene" uid="uid://cbrn3htc3o0r2" path="res://Scenes/main.tscn" id="3_lba6f"]
 [ext_resource type="Script" uid="uid://brj7pfi370tcm" path="res://Scripts/tv_main.gd" id="4_tv"]
 [ext_resource type="PackedScene" uid="uid://d3glye4351tgi" path="res://Scenes/player.tscn" id="5_player"]
@@ -5585,10 +5586,14 @@ zoom_target = Vector2(1.5, 1.5)
 zoom_position_target = Vector2(-15, -65)
 crt_size_after_zoom = Vector2(1060, 670)
 crt_position_after_zoom = Vector2(20, 30)
+bat_scene = ExtResource("2_m6yia")
 points_per_wave = 125
 score_label_position = Vector2(950, 60)
 score_label_size = Vector2(183.055, 31)
-go_home_button_position = Vector2(0, 80)
+game_over_score_position = Vector2(0, -60)
+go_home_button_position = Vector2(-100, 80)
+continue_button_position = Vector2(100, 80)
+infinite_label_position = Vector2(100, 120)
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=1034311241]
 

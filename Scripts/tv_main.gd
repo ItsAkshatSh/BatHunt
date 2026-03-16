@@ -1,3 +1,4 @@
+# tv_main.gd
 extends Node2D
 
 @export var scroll_speed: float = 300.0
@@ -21,7 +22,9 @@ extends Node2D
 # Game Over Layout
 @export var game_over_title_position: Vector2 = Vector2(0.0, -100.0)
 @export var game_over_score_position: Vector2 = Vector2(0.0, -40.0)
-@export var go_home_button_position: Vector2 = Vector2(0.0, 40.0)
+@export var go_home_button_position: Vector2 = Vector2(-100.0, 40.0)
+@export var continue_button_position: Vector2 = Vector2(100.0, 40.0)
+@export var infinite_label_position: Vector2 = Vector2(100.0, 75.0)
 
 const WAVE_CONFIG = [
 	{"max_active": 4, "health": 1, "wake_interval": 6.0},
@@ -33,6 +36,7 @@ const WAVE_CONFIG = [
 const BETWEEN_WAVE_DELAY: float = 3.0
 const BETWEEN_BATCH_DELAY: float = 2.0
 const FONT_PATH: String = "res://Assets/Bongo-8 Mono.ttf"
+const MIN_BATCH_SIZE: int = 4
 
 @onready var world_root: Node2D = $"WorldRoot"
 @onready var start_button_root: Control = $"UI/StartButtonRoot"
@@ -61,6 +65,7 @@ var _score: int = 0
 var _wave_banner_showing: bool = false
 var _total_waves: int = 4
 var _infinite_mode: bool = false
+var _launching_wave: bool = false
 
 var _game_over_overlay: ColorRect = null
 var _game_over_container: Control = null
@@ -74,6 +79,11 @@ var _controls_page1: Control = null
 var _controls_page2: Control = null
 var _controls_next_btn: TextureButton = null
 var _controls_sliding: bool = false
+
+# Bat Duplication
+var _original_bats_node: Node = null
+var _infinite_bats_template: Node = null
+var _current_bats_duplicate: Node = null
 
 func _ready() -> void:
 	_game_started = false
@@ -95,6 +105,71 @@ func _ready() -> void:
 	_build_game_over_screen()
 	_build_controls_screen()
 	_start_menu_music()
+	_cache_original_bats()
+
+# Bat Duplication
+func _cache_original_bats() -> void:
+	var bats = get_node_or_null("WorldRoot/Main/Bat")
+	if bats:
+		_original_bats_node = bats
+	else:
+		push_error("Could not find Bat node at WorldRoot/Main/Bat")
+
+	var bats_inf = get_node_or_null("WorldRoot/Main/Bat_Infinite")
+	if bats_inf:
+		_infinite_bats_template = bats_inf
+		for pos_node in _infinite_bats_template.get_children():
+			for bat in pos_node.get_children():
+				bat.modulate.a = 0.0
+	else:
+		push_error("Could not find Bat_Infinite node at WorldRoot/Main/Bat_Infinite")
+
+func _launch_infinite_wave() -> void:
+	if _launching_wave:
+		return
+	_launching_wave = true
+	var random_config_index = randi() % WAVE_CONFIG.size()
+	_current_wave = random_config_index
+	_display_wave_number += 1
+	await _respawn_bats(random_config_index)
+	_launching_wave = false
+	_begin_wave_with_banner(_current_wave)
+
+func _respawn_bats(wave_config_index: int) -> void:
+	if _infinite_bats_template == null:
+		push_error("Missing _infinite_bats_template")
+		return
+
+	if _current_bats_duplicate and is_instance_valid(_current_bats_duplicate):
+		_current_bats_duplicate.queue_free()
+		await get_tree().process_frame
+
+	var new_bats_root = Node2D.new()
+	new_bats_root.name = "BatsDuplicate"
+
+	for pos_node in _infinite_bats_template.get_children():
+		var new_pos = Node2D.new()
+		new_pos.name = pos_node.name
+		new_pos.position = pos_node.position
+		new_bats_root.add_child(new_pos)
+
+		for bat in pos_node.get_children():
+			var bat_packed = load(bat.scene_file_path)
+			if bat_packed == null:
+				continue
+			var new_bat = bat_packed.instantiate()
+			new_bat.name = bat.name
+			new_bat.position = bat.position
+			new_bat.modulate.a = 0.0
+			new_bat.wave_number = bat.wave_number
+			new_pos.add_child(new_bat)
+
+	_infinite_bats_template.get_parent().add_child(new_bats_root)
+	new_bats_root.global_position = _infinite_bats_template.global_position
+	_current_bats_duplicate = new_bats_root
+
+	await get_tree().process_frame
+	await get_tree().process_frame
 
 # Fade Overlay
 func _build_fade_overlay() -> void:
@@ -342,6 +417,24 @@ func _build_game_over_screen() -> void:
 	_game_over_container.add_child(home_btn)
 	home_btn.pressed.connect(_on_go_home_pressed)
 
+	var continue_btn := _make_button("CONTINUE", continue_button_position)
+	_game_over_container.add_child(continue_btn)
+	continue_btn.pressed.connect(_on_continue_pressed)
+
+	var infinite_label := Label.new()
+	infinite_label.text = "(Infinite mode)"
+	infinite_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	infinite_label.add_theme_color_override("font_color", Color(0.7, 0.7, 0.7, 1))
+	if bongo_font:
+		infinite_label.add_theme_font_override("font", bongo_font)
+	infinite_label.add_theme_font_size_override("font_size", 11)
+	infinite_label.set_anchors_preset(Control.PRESET_CENTER)
+	infinite_label.offset_left = infinite_label_position.x - 100.0
+	infinite_label.offset_right = infinite_label_position.x + 100.0
+	infinite_label.offset_top = infinite_label_position.y - 10.0
+	infinite_label.offset_bottom = infinite_label_position.y + 10.0
+	_game_over_container.add_child(infinite_label)
+
 func _make_button(label_text: String, center_position: Vector2) -> TextureButton:
 	var btn := TextureButton.new()
 	btn.texture_normal = load("res://Assets/button_rectangle_depth_flat.png")
@@ -416,6 +509,22 @@ func _on_go_home_pressed() -> void:
 		tween.tween_property(_fade_overlay, "color:a", 1.0, 0.8)
 		tween.tween_callback(func(): get_tree().reload_current_scene())
 
+# Infinite Mode
+func _on_continue_pressed() -> void:
+	if _game_over_overlay:
+		_game_over_overlay.visible = false
+	if _game_over_container:
+		_game_over_container.visible = false
+	if _original_bats_node:
+		_original_bats_node.visible = false
+	_infinite_mode = true
+	_game_started = true
+	_between_waves = false
+	_between_batch = false
+	_wave_banner_showing = false
+	_launching_wave = false
+	_launch_infinite_wave()
+
 func _process(delta: float) -> void:
 	if world_root == null or not _game_started:
 		return
@@ -434,7 +543,7 @@ func _process(delta: float) -> void:
 		if _between_wave_timer <= 0.0:
 			_between_waves = false
 			if _infinite_mode:
-				_begin_next_infinite_wave()
+				_launch_infinite_wave()
 			else:
 				_begin_wave_with_banner(_current_wave)
 		return
@@ -458,22 +567,38 @@ func _process(delta: float) -> void:
 				bat.wake_up(WAVE_CONFIG[_current_wave]["health"])
 
 func _get_wave_bats(wave_index: int) -> Array:
-	return get_tree().get_nodes_in_group("bats").filter(
-		func(b): return b.wave_number == wave_index + 1
-	)
+	if _infinite_mode:
+		return get_tree().get_nodes_in_group("bats").filter(
+			func(b): return b.wave_number == wave_index + 1
+		)
+	else:
+		return get_tree().get_nodes_in_group("bats").filter(
+			func(b): return b.wave_number == wave_index + 1 and _original_bats_node.is_ancestor_of(b)
+		)
 
 func _start_wave(wave_index: int) -> void:
 	var config = WAVE_CONFIG[wave_index]
 	var all_wave_bats = _get_wave_bats(wave_index)
 	all_wave_bats.shuffle()
-	_remaining_pool = all_wave_bats.slice(0, config["max_active"])
+
+	var seen_positions = {}
+	var unique_bats = []
+	for bat in all_wave_bats:
+		var pos_key = bat.get_parent().name
+		if not seen_positions.has(pos_key):
+			seen_positions[pos_key] = true
+			unique_bats.append(bat)
+
+	var pool_size = max(config["max_active"], MIN_BATCH_SIZE)
+	_remaining_pool = unique_bats.slice(0, pool_size)
 	_active_batch.clear()
 	_batch_sleeping.clear()
 	_batch_size = 0
 	_batch_cleared_count = 0
 
 	for bat in _remaining_pool:
-		bat.modulate.a = 0.0
+		bat.modulate.a = 1.0
+		bat.visible = true
 		bat.reset(config["health"])
 
 	_update_wave_label()
@@ -511,20 +636,12 @@ func _begin_wave_with_banner(wave_index: int) -> void:
 		_start_wave(wave_index)
 	)
 
-# Infinite Mode
-func _begin_next_infinite_wave() -> void:
-	var random_config_index = randi() % WAVE_CONFIG.size()
-	_current_wave = random_config_index
-	_display_wave_number += 1
-	_between_waves = false
-	_begin_wave_with_banner(_current_wave)
-
 func _spawn_next_batch() -> void:
 	if _remaining_pool.is_empty():
 		return
 
 	var config = WAVE_CONFIG[_current_wave]
-	var batch_size = min(config["max_active"], _remaining_pool.size())
+	var batch_size = max(min(config["max_active"], _remaining_pool.size()), min(MIN_BATCH_SIZE, _remaining_pool.size()))
 
 	_active_batch = _remaining_pool.slice(0, batch_size)
 	_remaining_pool = _remaining_pool.slice(batch_size)
@@ -536,7 +653,8 @@ func _spawn_next_batch() -> void:
 
 	for bat in _active_batch:
 		bat.modulate.a = 0.0
-		bat.reset(config["health"])
+		bat.visible = true
+		bat.reset(WAVE_CONFIG[_current_wave]["health"])
 		if bat.bat_removed.is_connected(_on_bat_removed):
 			bat.bat_removed.disconnect(_on_bat_removed)
 		bat.bat_removed.connect(_on_bat_removed)

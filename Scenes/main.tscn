@@ -4304,3 +4304,237 @@ wave_number = 3
 modulate = Color(1, 1, 1, 0)
 position = Vector2(248, 377)
 wave_number = 4
+
+[node name="Bat_Infinite" type="Node2D" parent="." unique_id=1752690001]
+z_index = 1
+position = Vector2(34, 15)
+
+[node name="BatPosition1" type="Node2D" parent="Bat_Infinite" unique_id=623289828]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition1" unique_id=1577517622 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(160, 261)
+rotation = -3.1415925
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition1" unique_id=467521621 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(160, 261)
+rotation = -3.1415925
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition1" unique_id=623301025 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(160, 261)
+rotation = -3.1415925
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition1" unique_id=1953729252 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(160, 261)
+rotation = -3.1415925
+wave_number = 4
+
+[node name="BatPosition2" type="Node2D" parent="Bat_Infinite" unique_id=1989830118]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition2" unique_id=504721146 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(92, 269)
+rotation = -3.1415925
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition2" unique_id=1471152381 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(92, 269)
+rotation = -3.1415925
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition2" unique_id=587086663 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(92, 269)
+rotation = -3.1415925
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition2" unique_id=1378869450 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(92, 269)
+rotation = -3.1415925
+wave_number = 4
+
+[node name="BatPosition3" type="Node2D" parent="Bat_Infinite" unique_id=1946246969]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition3" unique_id=111740077 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(100, 313)
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition3" unique_id=17342467 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(100, 313)
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition3" unique_id=37546393 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(100, 313)
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition3" unique_id=1146003854 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(100, 313)
+wave_number = 4
+
+[node name="BatPosition4" type="Node2D" parent="Bat_Infinite" unique_id=1707198306]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition4" unique_id=2065470236 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(467, 360)
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition4" unique_id=108072701 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(467, 360)
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition4" unique_id=1367421963 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(467, 360)
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition4" unique_id=924188372 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(467, 360)
+wave_number = 4
+
+[node name="BatPosition5" type="Node2D" parent="Bat_Infinite" unique_id=780268436]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition5" unique_id=2017112704 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(548, 358)
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition5" unique_id=442463879 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(548, 358)
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition5" unique_id=2134834918 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(548, 358)
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition5" unique_id=1882780348 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(548, 358)
+wave_number = 4
+
+[node name="BatPosition6" type="Node2D" parent="Bat_Infinite" unique_id=2088697764]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition6" unique_id=1033255080 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(802, 296)
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition6" unique_id=1830335536 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(802, 296)
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition6" unique_id=781360514 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(802, 296)
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition6" unique_id=1831054242 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(802, 296)
+wave_number = 4
+
+[node name="BatPosition7" type="Node2D" parent="Bat_Infinite" unique_id=1702545153]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition7" unique_id=1913064948 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(309, 265)
+rotation = -3.132866
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition7" unique_id=785799295 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(309, 265)
+rotation = -3.132866
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition7" unique_id=475966992 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(309, 265)
+rotation = -3.132866
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition7" unique_id=113066850 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(309, 265)
+rotation = -3.132866
+wave_number = 4
+
+[node name="BatPosition8" type="Node2D" parent="Bat_Infinite" unique_id=400629975]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition8" unique_id=886981781 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(405, 267)
+rotation = -3.132866
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition8" unique_id=372994520 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(405, 267)
+rotation = -3.132866
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition8" unique_id=793720121 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(405, 267)
+rotation = -3.132866
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition8" unique_id=1200292700 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(405, 267)
+rotation = -3.132866
+wave_number = 4
+
+[node name="BatPosition9" type="Node2D" parent="Bat_Infinite" unique_id=84868978]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition9" unique_id=1988990899 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(707, 206)
+rotation = -3.132866
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition9" unique_id=1368715665 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(707, 206)
+rotation = -3.132866
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition9" unique_id=2122381721 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(707, 206)
+rotation = -3.132866
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition9" unique_id=722673546 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(707, 206)
+rotation = -3.132866
+wave_number = 4
+
+[node name="BatPosition10" type="Node2D" parent="Bat_Infinite" unique_id=700152277]
+
+[node name="Bat_W1" parent="Bat_Infinite/BatPosition10" unique_id=639766408 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(248, 377)
+
+[node name="Bat_W2" parent="Bat_Infinite/BatPosition10" unique_id=769729817 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(248, 377)
+wave_number = 2
+
+[node name="Bat_W3" parent="Bat_Infinite/BatPosition10" unique_id=371962135 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(248, 377)
+wave_number = 3
+
+[node name="Bat_W4" parent="Bat_Infinite/BatPosition10" unique_id=1130503968 instance=ExtResource("8_344ge")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(248, 377)
+wave_number = 4
