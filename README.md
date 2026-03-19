@@ -16,7 +16,7 @@
 
 Welcome to **Bat Hunt**!
 
-This is a remake of the classic **Duck Hunt**, but with a twist —
+This is a remake of the classic **Duck Hunt**, but with a twist, 
 instead of ducks, you're hunting **bats inside a cave**.
 
 Test your reflexes and aim as bats fly through the darkness!
